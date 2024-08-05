@@ -1,6 +1,7 @@
 import express from 'express'
 import mongoose, { mongo } from 'mongoose'
 import dotenv from 'dotenv'
+import userRoutes from './routes/user.route.js'
 
 const app = express()
 dotenv.config()
@@ -14,3 +15,5 @@ mongoose.connect(process.env.MONGO).then(()=>{
 }).catch((err)=>{
     console.log(err)
 })
+
+app.use('/api/user', userRoutes)
